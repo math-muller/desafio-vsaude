@@ -1,3 +1,4 @@
+import 'package:desafio_vsaude/app/data/models/models.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:dio/dio.dart';
 
@@ -10,5 +11,9 @@ class RemoteAddAccount {
 
   static const CREATEPATH = 'services/app/User/CreateMobileUser';
 
-  add() {}
+  Future<TokenAuthModel> add() {
+    try {
+      
+    } catch (e) {}
+  }
 }

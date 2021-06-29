@@ -56,12 +56,6 @@ class RegisterPage extends StatelessWidget {
                           ),
                           TextFormField(
                             decoration: InputDecoration(
-                              labelText: 'Telefone',
-                              labelStyle: TextStyle(fontSize: 14),
-                            ),
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
                               labelText: 'Senha',
                               labelStyle: TextStyle(fontSize: 14),
                             ),
