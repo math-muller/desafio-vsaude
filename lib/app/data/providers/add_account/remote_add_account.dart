@@ -11,9 +11,24 @@ class RemoteAddAccount {
 
   static const CREATEPATH = 'services/app/User/CreateMobileUser';
 
-  Future<TokenAuthModel> add() {
+  Future<TokenAuthModel> add({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
     try {
-      
-    } catch (e) {}
+      final Response response = await _dio.post(
+        '$PATH$CREATEPATH',
+        data: {
+          'mobileProjectId': MOBILEPROJECTID,
+          'fullName': name,
+          'emailAddress': email,
+          'password': password,
+        },
+      );
+      return TokenAuthModel.fromJson(response.data);
+    } catch (e) {
+      rethrow;
+    }
   }
 }

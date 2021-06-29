@@ -16,7 +16,7 @@ class RemoteAuthentication {
   Future<int> authEmail({required String email}) async {
     try {
       final Response response = await _dio.post(
-        EMAILPATH,
+        '$PATH$EMAILPATH',
         data: {'email': email, 'mobileProjectId': MOBILEPROJECTID},
       );
       return response.statusCode!;
@@ -36,7 +36,7 @@ class RemoteAuthentication {
   }) async {
     try {
       final Response response = await _dio.post(
-        AUTHPATH,
+        '$PATH$AUTHPATH',
         data: {
           'userNameOrEmailAddress': email,
           'password': password,
