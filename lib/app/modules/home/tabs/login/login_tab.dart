@@ -1,27 +1,20 @@
+import 'package:desafio_vsaude/app/global_components/gradient_background.dart';
+import 'package:desafio_vsaude/app/modules/home/home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginTab extends StatelessWidget {
   const LoginTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<HomeController>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height * 0.92,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.1, 0.58],
-              colors: [
-                Colors.pinkAccent,
-                Colors.purple,
-              ],
-            ),
-          ),
+        child: GradientBackground(
+          screenSize: 0.92,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -77,7 +70,7 @@ class LoginTab extends StatelessWidget {
               ),
               SizedBox(height: 10),
               TextButton(
-                onPressed: () {},
+                onPressed: controller.goToRegister,
                 child: Text(
                   'Cadastre-se!',
                   style: TextStyle(

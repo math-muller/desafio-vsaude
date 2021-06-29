@@ -1,3 +1,4 @@
+import 'package:desafio_vsaude/app/global_components/gradient_background.dart';
 import 'package:desafio_vsaude/app/modules/home/tabs/inicio/components/inicio_card.dart';
 import 'package:flutter/material.dart';
 
@@ -6,22 +7,22 @@ class InicioTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          stops: [0.1, 0.58],
-          colors: [
-            Colors.pinkAccent,
-            Colors.purple,
-          ],
-        ),
-      ),
+    return GradientBackground(
       child: Stack(
         children: [
+          Positioned(
+            top: 80,
+            left: 100,
+            right: 20,
+            child: Text(
+              'Bella\nMaterna',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 45,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
           Positioned(
             left: 20,
             right: 20,
