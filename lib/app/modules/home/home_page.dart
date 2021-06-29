@@ -1,4 +1,5 @@
 import 'package:desafio_vsaude/app/modules/home/tabs/inicio/inicio_tab.dart';
+import 'package:desafio_vsaude/app/modules/home/tabs/login/login_tab.dart';
 import 'package:desafio_vsaude/app/modules/home/tabs/saude/saude_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,7 @@ class HomePage extends StatelessWidget {
             index: _.tabIndex.value,
             children: [
               InicioTab(),
-              SaudeTab(),
+              _.isAuthenticated.value ? SaudeTab() : LoginTab(),
             ],
           );
         }),
