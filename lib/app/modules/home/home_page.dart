@@ -13,10 +13,10 @@ class HomePage extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (_) => Scaffold(
         bottomNavigationBar: Obx(() {
-          _.tabIndex.value;
+          _.tabIndex;
           return BottomNavigationBar(
             selectedItemColor: Colors.purple,
-            currentIndex: _.tabIndex.value,
+            currentIndex: _.tabIndex,
             onTap: _.changeTabIndex,
             items: [
               BottomNavigationBarItem(
@@ -34,10 +34,10 @@ class HomePage extends StatelessWidget {
         }),
         body: Obx(() {
           return IndexedStack(
-            index: _.tabIndex.value,
+            index: _.tabIndex,
             children: [
               InicioTab(),
-              _.isAuthenticated.value ? SaudeTab() : LoginTab(),
+              _.isAuthenticated ? SaudeTab() : LoginTab(),
             ],
           );
         }),

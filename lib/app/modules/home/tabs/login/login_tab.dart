@@ -1,5 +1,4 @@
 import 'package:desafio_vsaude/app/global_components/gradient_background.dart';
-import 'package:desafio_vsaude/app/modules/home/home.dart';
 import 'package:desafio_vsaude/app/modules/home/tabs/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,6 +42,7 @@ class LoginTab extends StatelessWidget {
                                     labelText: 'E-mail',
                                     labelStyle: TextStyle(fontSize: 14),
                                   ),
+                                  onChanged: _.onEmailChanged,
                                 ),
                               )
                             : AnimatedContainer(
@@ -52,6 +52,7 @@ class LoginTab extends StatelessWidget {
                                     labelText: 'Senha',
                                     labelStyle: TextStyle(fontSize: 14),
                                   ),
+                                  onChanged: _.onPasswordChanged,
                                 ),
                               );
                       }),
@@ -60,7 +61,9 @@ class LoginTab extends StatelessWidget {
                         width: 200,
                         height: 45,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _.authEmail(context: context);
+                          },
                           child: Text('Entrar'),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
