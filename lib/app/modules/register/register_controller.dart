@@ -10,13 +10,53 @@ class RegisterController extends GetxController {
   TokenAuthModel? _authModel;
   TokenAuthModel? get authModel => _authModel;
 
+  GlobalKey<FormState> _formKey = GlobalKey();
+  GlobalKey<FormState> get formKey => _formKey;
+
   String _fullName = '';
   String _email = '';
   String _password = '';
 
-  void onFullNameChanged(String text) => _fullName = text;
-  void onEmailChanged(String text) => _email = text;
-  void onPasswordChanged(String text) => _password = text;
+  String? validateFullName(String? text) {
+    if (text == null || text.isEmpty) {
+      return 'Insira seu nome';
+    } else {
+      _fullName = text;
+      return null;
+    }
+  }
+
+  String? validateEmail(String? text) {
+    final _regex = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
+    if (text == null || text.isEmpty) {
+      return 'Insira seu email';
+    } else {
+      if (_regex.hasMatch(text)) {
+        _email = text;
+        return null;
+      } else {
+        return 'Email inválido';
+      }
+    }
+  }
+
+  String? validatePassword(String? text) {
+    if (text == null || text.isEmpty) {
+      return 'Insira sua senha';
+    } else {
+      _password = text;
+      return null;
+    }
+  }
+
+  Future<void> validateForm({required BuildContext context}) async {
+    final bool _isValid = _formKey.currentState!.validate();
+    if (_isValid) {
+      await signUp(context: context);
+    }
+  }
 
   Future<void> signUp({required BuildContext context}) async {
     try {

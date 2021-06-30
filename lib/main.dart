@@ -1,3 +1,4 @@
+import 'package:desafio_vsaude/app/global_components/app_theme.dart';
 import 'package:desafio_vsaude/app/modules/home/home.dart';
 import 'package:desafio_vsaude/app/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: makeAppTheme(),
       home: HomePage(),
       initialBinding: HomeBinding(),
       getPages: AppPages.pages,

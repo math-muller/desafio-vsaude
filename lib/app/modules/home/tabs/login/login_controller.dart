@@ -1,4 +1,3 @@
-import 'package:desafio_vsaude/app/data/models/models.dart';
 import 'package:desafio_vsaude/app/data/repositories/authentication/authentication_repository.dart';
 import 'package:desafio_vsaude/app/global_components/show_message.dart';
 import 'package:desafio_vsaude/app/modules/home/home.dart';
@@ -10,19 +9,59 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   final _repository = Get.find<AuthenticationRepository>();
 
-  TokenAuthModel? _authModel;
-
   RxBool _isValidEmail = false.obs;
   bool get isValidEmail => _isValidEmail.value;
 
   String _email = '';
   String _password = '';
 
+  GlobalKey<FormState> _formKey = GlobalKey();
+  GlobalKey<FormState> get formKey => _formKey;
+
   TextEditingController _emailController = TextEditingController();
   TextEditingController get editingController => _emailController;
 
   void onEmailChanged(String text) => _email = text;
   void onPasswordChanged(String text) => _password = text;
+
+  String? validateEmail(String? text) {
+    final _regex = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
+    if (text == null || text.isEmpty) {
+      return 'Insira seu email';
+    } else {
+      if (_regex.hasMatch(text)) {
+        _email = text;
+        return null;
+      } else {
+        return 'Email inválido';
+      }
+    }
+  }
+
+  String? validatePassword(String? text) {
+    if (text == null || text.isEmpty) {
+      return 'Insira sua senha';
+    } else {
+      _password = text;
+      return null;
+    }
+  }
+
+  Future<void> validateEmailError({required BuildContext context}) async {
+    final bool _isValid = _formKey.currentState!.validate();
+    if (_isValid) {
+      await authEmail(context: context);
+    }
+  }
+
+  Future<void> validatePasswordError({required BuildContext context}) async {
+    final bool _isValid = _formKey.currentState!.validate();
+    if (_isValid) {
+      await auth(context: context);
+    }
+  }
 
   Future<void> authEmail({required BuildContext context}) async {
     try {
@@ -41,7 +80,7 @@ class LoginController extends GetxController {
 
   Future<void> auth({required BuildContext context}) async {
     try {
-      _authModel = await _repository.authEmailAndPassword(
+      await _repository.authEmailAndPassword(
         email: _email,
         password: _password,
       );

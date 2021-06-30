@@ -8,7 +8,13 @@ class SaudeTab extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      color: Colors.red,
+      color: Colors.pinkAccent.withOpacity(0.4),
+      child: Center(
+        child: Text(
+          'LOGADO COM SUCESSO',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+      ),
     );
   }
 }

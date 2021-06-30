@@ -27,7 +27,7 @@ class InicioCard extends StatelessWidget {
             width: double.infinity,
             height: 50,
             decoration: BoxDecoration(
-              color: Colors.purple,
+              color: Colors.pinkAccent.shade200,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
@@ -48,7 +48,7 @@ class InicioCard extends StatelessWidget {
           ListTile(
             title: Text(
               subtitle,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
             leading: Icon(
               icon,

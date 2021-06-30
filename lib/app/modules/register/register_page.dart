@@ -39,48 +39,48 @@ class RegisterPage extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Nome completo',
-                              labelStyle: TextStyle(fontSize: 14),
+                      child: Form(
+                        key: _.formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'Nome completo',
+                              ),
+                              validator: _.validateFullName,
                             ),
-                            onChanged: _.onFullNameChanged,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'E-mail',
-                              labelStyle: TextStyle(fontSize: 14),
+                            TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'E-mail',
+                              ),
+                              validator: _.validateEmail,
                             ),
-                            onChanged: _.onEmailChanged,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Senha',
-                              labelStyle: TextStyle(fontSize: 14),
+                            TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'Senha',
+                              ),
+                              validator: _.validatePassword,
                             ),
-                            onChanged: _.onPasswordChanged,
-                          ),
-                          SizedBox(height: 40),
-                          SizedBox(
-                            width: 200,
-                            height: 45,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _.signUp(context: context);
-                              },
-                              child: Text('Cadastrar'),
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                  Colors.pinkAccent,
+                            SizedBox(height: 40),
+                            SizedBox(
+                              width: 200,
+                              height: 45,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _.validateForm(context: context);
+                                },
+                                child: Text('Cadastrar'),
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Colors.pinkAccent,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 40),
-                        ],
+                            SizedBox(height: 40),
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -30,55 +30,58 @@ class LoginTab extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Obx(() {
-                        return !_.isValidEmail
-                            ? AnimatedContainer(
-                                duration: Duration(milliseconds: 600),
-                                child: TextFormField(
-                                  controller: _.editingController,
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    labelText: 'E-mail',
-                                    labelStyle: TextStyle(fontSize: 14),
+                  child: Form(
+                    key: _.formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Obx(() {
+                          return !_.isValidEmail
+                              ? AnimatedContainer(
+                                  duration: Duration(milliseconds: 600),
+                                  child: TextFormField(
+                                    controller: _.editingController,
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      labelText: 'E-mail',
+                                    ),
+                                    onChanged: _.onEmailChanged,
+                                    validator: _.validateEmail,
                                   ),
-                                  onChanged: _.onEmailChanged,
-                                ),
-                              )
-                            : AnimatedContainer(
-                                duration: Duration(milliseconds: 600),
-                                child: TextFormField(
-                                  keyboardType: TextInputType.text,
-                                  decoration: InputDecoration(
-                                    labelText: 'Senha',
-                                    labelStyle: TextStyle(fontSize: 14),
+                                )
+                              : AnimatedContainer(
+                                  duration: Duration(milliseconds: 600),
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.text,
+                                    decoration: InputDecoration(
+                                      labelText: 'Senha',
+                                    ),
+                                    onChanged: _.onPasswordChanged,
+                                    validator: _.validatePassword,
                                   ),
-                                  onChanged: _.onPasswordChanged,
-                                ),
-                              );
-                      }),
-                      SizedBox(height: 40),
-                      SizedBox(
-                        width: 200,
-                        height: 45,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            _.isValidEmail
-                                ? _.auth(context: context)
-                                : _.authEmail(context: context);
-                          },
-                          child: Text('Entrar'),
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                              Colors.pinkAccent,
+                                );
+                        }),
+                        SizedBox(height: 40),
+                        SizedBox(
+                          width: 200,
+                          height: 45,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _.isValidEmail
+                                  ? _.validatePasswordError(context: context)
+                                  : _.validateEmailError(context: context);
+                            },
+                            child: Text('Entrar'),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                Colors.pinkAccent,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 40),
-                    ],
+                        SizedBox(height: 40),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 40),
