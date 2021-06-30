@@ -1,6 +1,7 @@
-import 'package:desafio_vsaude/app/data/models/models.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:dio/dio.dart';
+
+import '../../models/models.dart';
 
 class RemoteAddAccount {
   final Dio _dio = Get.find<Dio>();

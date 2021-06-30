@@ -1,8 +1,9 @@
-import 'package:desafio_vsaude/app/data/models/models.dart';
-import 'package:desafio_vsaude/app/data/repositories/add_account/add_account_repository.dart';
-import 'package:desafio_vsaude/app/global_components/show_message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../data/models/models.dart';
+import '../../data/repositories/repositories.dart';
+import '../../global_components/global_components.dart';
 
 class RegisterController extends GetxController {
   final _repository = Get.find<AddAccountRepository>();
@@ -59,19 +60,22 @@ class RegisterController extends GetxController {
   }
 
   Future<void> signUp({required BuildContext context}) async {
+    SpinnerDialog spinnerDialog = SpinnerDialog(context);
     try {
+      spinnerDialog.showLoading();
       await _repository.addAccount(
         name: _fullName,
         email: _email,
         password: _password,
       );
+      spinnerDialog.hideLoading();
       showMessage(
         context: context,
         message: 'Cadastrado com sucesso',
         success: true,
       );
     } catch (e) {
-      print(e);
+      spinnerDialog.hideLoading();
       showMessage(context: context, message: 'Erro ao cadastrar usuario.');
     }
   }

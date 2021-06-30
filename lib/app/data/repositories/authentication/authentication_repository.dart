@@ -1,6 +1,7 @@
-import 'package:desafio_vsaude/app/data/models/models.dart';
-import 'package:desafio_vsaude/app/data/providers/providers.dart';
 import 'package:get/get.dart';
+
+import '../../models/models.dart';
+import '../../providers/providers.dart';
 
 class AuthenticationRepository {
   final RemoteAuthentication _remote = Get.find<RemoteAuthentication>();

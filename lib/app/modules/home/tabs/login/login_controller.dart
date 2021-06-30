@@ -1,10 +1,13 @@
-import 'package:desafio_vsaude/app/data/repositories/authentication/authentication_repository.dart';
-import 'package:desafio_vsaude/app/global_components/show_message.dart';
-import 'package:desafio_vsaude/app/modules/home/home.dart';
-import 'package:desafio_vsaude/app/routes/routes.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../../data/repositories/repositories.dart';
+import '../../../../global_components/global_components.dart';
+
+import '../../../../routes/routes.dart';
+
+import '../../home.dart';
 
 class LoginController extends GetxController {
   final _repository = Get.find<AuthenticationRepository>();
@@ -64,29 +67,37 @@ class LoginController extends GetxController {
   }
 
   Future<void> authEmail({required BuildContext context}) async {
+    SpinnerDialog spinnerDialog = SpinnerDialog(context);
     try {
+      spinnerDialog.showLoading();
       final _isOk = await _repository.authEmail(email: _email);
       if (_isOk == 200) {
         _isValidEmail.value = true;
       } else {
         showMessage(context: context, message: 'Email não cadastrado');
       }
+      spinnerDialog.hideLoading();
       _emailController.clear();
     } catch (e) {
+      spinnerDialog.hideLoading();
       showMessage(context: context, message: 'Erro desconhecido');
       _emailController.clear();
     }
   }
 
   Future<void> auth({required BuildContext context}) async {
+    SpinnerDialog spinnerDialog = SpinnerDialog(context);
     try {
+      spinnerDialog.showLoading();
       await _repository.authEmailAndPassword(
         email: _email,
         password: _password,
       );
+      spinnerDialog.hideLoading();
       HomeController.instance.setAuthentication();
     } catch (e) {
       if (e is DioError) {
+        spinnerDialog.hideLoading();
         showMessage(context: context, message: 'Erro desconhecido');
       }
     }

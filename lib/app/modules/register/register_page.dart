@@ -1,8 +1,10 @@
-import 'package:desafio_vsaude/app/global_components/gradient_background.dart';
-import 'package:desafio_vsaude/app/modules/register/register.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../global_components/global_components.dart';
+
+import '../register/register.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);

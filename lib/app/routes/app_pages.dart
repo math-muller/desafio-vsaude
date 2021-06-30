@@ -1,8 +1,8 @@
-import 'package:desafio_vsaude/app/modules/register/register_binding.dart';
-import 'package:desafio_vsaude/app/modules/register/register_page.dart';
 import 'package:get/route_manager.dart';
 
 import '../modules/home/home.dart';
+
+import '../modules/register/register.dart';
 
 import 'app_routes.dart';
 

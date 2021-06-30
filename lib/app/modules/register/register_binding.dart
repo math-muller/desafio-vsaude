@@ -1,5 +1,6 @@
-import 'package:desafio_vsaude/app/modules/register/register_controller.dart';
 import 'package:get/get.dart';
+
+import '../register/register.dart';
 
 class RegisterBinding implements Bindings {
   @override

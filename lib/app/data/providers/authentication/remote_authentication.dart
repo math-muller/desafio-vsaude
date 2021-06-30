@@ -1,5 +1,6 @@
-import 'package:desafio_vsaude/app/data/models/models.dart';
 import 'package:get/get.dart' hide Response;
+
+import '../../models/models.dart';
 
 import 'package:dio/dio.dart';
 

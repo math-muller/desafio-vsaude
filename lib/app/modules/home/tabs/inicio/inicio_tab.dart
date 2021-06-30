@@ -1,6 +1,8 @@
-import 'package:desafio_vsaude/app/global_components/gradient_background.dart';
-import 'package:desafio_vsaude/app/modules/home/tabs/inicio/components/inicio_card.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../global_components/global_components.dart';
+
+import 'components/components.dart';
 
 class InicioTab extends StatelessWidget {
   const InicioTab({Key? key}) : super(key: key);

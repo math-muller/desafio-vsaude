@@ -1,9 +1,11 @@
-import 'package:desafio_vsaude/app/modules/home/tabs/inicio/inicio_tab.dart';
-import 'package:desafio_vsaude/app/modules/home/tabs/login/login_tab.dart';
-import 'package:desafio_vsaude/app/modules/home/tabs/saude/saude_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:desafio_vsaude/app/modules/home/home.dart';
+
+import 'tabs/inicio/inicio_tab.dart';
+import 'tabs/login/login_tab.dart';
+import 'tabs/saude/saude_tab.dart';
+
+import 'home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
