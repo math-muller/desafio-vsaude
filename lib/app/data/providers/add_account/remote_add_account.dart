@@ -7,9 +7,7 @@ class RemoteAddAccount {
 
   static const MOBILEPROJECTID = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
 
-  static const PATH = 'https://hml.vsaude.com.br/api/';
-
-  static const CREATEPATH = 'services/app/User/CreateMobileUser';
+  static const CREATEPATH = '/services/app/User/CreateMobileUser';
 
   Future<TokenAuthModel> add({
     required String name,
@@ -18,7 +16,7 @@ class RemoteAddAccount {
   }) async {
     try {
       final Response response = await _dio.post(
-        '$PATH$CREATEPATH',
+        CREATEPATH,
         data: {
           'mobileProjectId': MOBILEPROJECTID,
           'fullName': name,

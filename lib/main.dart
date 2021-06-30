@@ -1,10 +1,12 @@
 import 'package:desafio_vsaude/app/modules/home/home.dart';
+import 'package:desafio_vsaude/app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app/routes/routes.dart';
 
 void main() {
+  DependencyInjection.init();
   runApp(MyApp());
 }
 

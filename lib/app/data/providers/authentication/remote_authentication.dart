@@ -8,15 +8,13 @@ class RemoteAuthentication {
 
   static const MOBILEPROJECTID = 'fcc80c1d-6040-4e57-a23c-abb301653616';
 
-  static const PATH = 'https://hml.vsaude.com.br/api/';
-
-  static const EMAILPATH = 'services/app/User/ValidateEmailForMobileProject';
-  static const AUTHPATH = 'TokenAuth/AuthenticateMobileUser';
+  static const EMAILPATH = '/services/app/User/ValidateEmailForMobileProject';
+  static const AUTHPATH = '/TokenAuth/AuthenticateMobileUser';
 
   Future<int> authEmail({required String email}) async {
     try {
       final Response response = await _dio.post(
-        '$PATH$EMAILPATH',
+        EMAILPATH,
         data: {'email': email, 'mobileProjectId': MOBILEPROJECTID},
       );
       return response.statusCode!;
@@ -36,7 +34,7 @@ class RemoteAuthentication {
   }) async {
     try {
       final Response response = await _dio.post(
-        '$PATH$AUTHPATH',
+        AUTHPATH,
         data: {
           'userNameOrEmailAddress': email,
           'password': password,
