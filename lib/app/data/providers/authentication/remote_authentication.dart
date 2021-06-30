@@ -15,15 +15,10 @@ class RemoteAuthentication {
     try {
       final Response response = await _dio.post(
         EMAILPATH,
-        data: {'email': email, 'mobileProjectId': MOBILEPROJECTID},
+        queryParameters: {'email': email, 'mobileProjectId': MOBILEPROJECTID},
       );
-      return response.statusCode!;
+      return _handleResponse(response);
     } catch (e) {
-      if (e is DioError) {
-        if (e.response != null) {
-          return e.response!.statusCode!;
-        }
-      }
       rethrow;
     }
   }
@@ -44,6 +39,17 @@ class RemoteAuthentication {
       return TokenAuthModel.fromJson(response.data['result']);
     } catch (e) {
       rethrow;
+    }
+  }
+
+  dynamic _handleResponse(Response response) {
+    switch (response.statusCode) {
+      case 200:
+        return 200;
+      case 500:
+        return 500;
+      default:
+        throw Exception();
     }
   }
 }

@@ -13,10 +13,10 @@ class TokenAuthModel {
 
   factory TokenAuthModel.fromJson(Map<String, dynamic> json) {
     return TokenAuthModel(
-      accessToken: json['accessToken'],
-      encryptedAccessToken: json['encryptedAccessToken'],
-      expireInSeconds: json['expireInSeconds'],
-      userId: json['userId'],
+      accessToken: json['accessToken'] ?? '',
+      encryptedAccessToken: json['encryptedAccessToken'] ?? '',
+      expireInSeconds: json['expireInSeconds'] ?? 0,
+      userId: json['userId'] ?? 0,
     );
   }
 

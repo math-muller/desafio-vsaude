@@ -5,11 +5,11 @@ import 'package:dio/dio.dart';
 class RemoteAddAccount {
   final Dio _dio = Get.find<Dio>();
 
-  static const MOBILEPROJECTID = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+  static const MOBILEPROJECTID = 'fcc80c1d-6040-4e57-a23c-abb301653616';
 
   static const CREATEPATH = '/services/app/User/CreateMobileUser';
 
-  Future<TokenAuthModel> add({
+  Future<TokenAuthModel> addAccount({
     required String name,
     required String email,
     required String password,
@@ -21,7 +21,7 @@ class RemoteAddAccount {
           'mobileProjectId': MOBILEPROJECTID,
           'fullName': name,
           'emailAddress': email,
-          'password': password,
+          'password': password
         },
       );
       return TokenAuthModel.fromJson(response.data);

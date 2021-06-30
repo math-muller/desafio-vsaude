@@ -5,12 +5,12 @@ import 'package:get/get.dart';
 class AuthenticationRepository {
   final RemoteAuthentication _remote = Get.find<RemoteAuthentication>();
 
-  Future<int> authEmail({required String email}) async =>
+  Future<int> authEmail({required String email}) =>
       _remote.authEmail(email: email);
 
   Future<TokenAuthModel> authEmailAndPassword({
     required String email,
     required String password,
-  }) async =>
+  }) =>
       _remote.authEmailAndPassword(email: email, password: password);
 }

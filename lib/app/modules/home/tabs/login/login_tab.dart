@@ -34,10 +34,12 @@ class LoginTab extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Obx(() {
-                        return !_.isValidEmail.value
+                        return !_.isValidEmail
                             ? AnimatedContainer(
                                 duration: Duration(milliseconds: 600),
                                 child: TextFormField(
+                                  controller: _.editingController,
+                                  keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
                                     labelText: 'E-mail',
                                     labelStyle: TextStyle(fontSize: 14),
@@ -48,6 +50,7 @@ class LoginTab extends StatelessWidget {
                             : AnimatedContainer(
                                 duration: Duration(milliseconds: 600),
                                 child: TextFormField(
+                                  keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                     labelText: 'Senha',
                                     labelStyle: TextStyle(fontSize: 14),
@@ -62,7 +65,9 @@ class LoginTab extends StatelessWidget {
                         height: 45,
                         child: ElevatedButton(
                           onPressed: () {
-                            _.authEmail(context: context);
+                            _.isValidEmail
+                                ? _.auth(context: context)
+                                : _.authEmail(context: context);
                           },
                           child: Text('Entrar'),
                           style: ButtonStyle(

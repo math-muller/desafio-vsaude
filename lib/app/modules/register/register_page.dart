@@ -47,25 +47,30 @@ class RegisterPage extends StatelessWidget {
                               labelText: 'Nome completo',
                               labelStyle: TextStyle(fontSize: 14),
                             ),
+                            onChanged: _.onFullNameChanged,
                           ),
                           TextFormField(
                             decoration: InputDecoration(
                               labelText: 'E-mail',
                               labelStyle: TextStyle(fontSize: 14),
                             ),
+                            onChanged: _.onEmailChanged,
                           ),
                           TextFormField(
                             decoration: InputDecoration(
                               labelText: 'Senha',
                               labelStyle: TextStyle(fontSize: 14),
                             ),
+                            onChanged: _.onPasswordChanged,
                           ),
                           SizedBox(height: 40),
                           SizedBox(
                             width: 200,
                             height: 45,
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                _.signUp(context: context);
+                              },
                               child: Text('Cadastrar'),
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
